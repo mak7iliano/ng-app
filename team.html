@@ -1,0 +1,16 @@
+<div class="app-view-type">
+    <a class="selected" href="javascript:void(0)" ng-click="viewType(list)">List</a>
+    <a href="javascript:void(0)" ng-click="viewType(card)">Card</a>
+</div>
+<h1>{{title}}</h1>
+
+<ul class="app-user-list">
+    <li ng-repeat="user in team">
+        <div class="avatar" style="background-image: url('image/user.png')"></div>
+        {{user.name}}
+        <span class="light">{{user.email}}</span>
+        <a href="#!/team/{{user.id}}" class="go-arrow">&rsaquo;</a>
+    </li>
+</ul>
+
+<div class="app-loading" ng-if="loading"></div>
