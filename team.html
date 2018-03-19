@@ -1,10 +1,10 @@
 <div class="app-view-type">
-    <a class="selected" href="javascript:void(0)" ng-click="viewType(list)">List</a>
-    <a href="javascript:void(0)" ng-click="viewType(card)">Card</a>
+    <a ng-class="{selected : isList}" href="javascript:void(0)" ng-click="viewType('list')">List</a>
+    <a ng-class="{selected : !isList}" href="javascript:void(0)" ng-click="viewType('card')">Cards</a>
 </div>
 <h1>{{title}}</h1>
 
-<ul class="app-user-list">
+<ul class="app-user-list"  ng-class="{cards : !isList}">
     <li ng-repeat="user in team">
         <div class="avatar" style="background-image: url('image/user.png')"></div>
         {{user.name}}
