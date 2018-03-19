@@ -8,7 +8,9 @@ app.controller('listCtrl', function (listFactory, cardFactory){
     };
 
     this.createCard = function(list) {
-        cardFactory.addCards(list, this.cardDescription);
-        this.cardDescription = '';
+        if (this.cardDescription) {
+            cardFactory.addCards(list, this.cardDescription);
+            this.cardDescription = '';
+        }        
     }
 });

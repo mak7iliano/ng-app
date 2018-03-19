@@ -35,6 +35,12 @@ select {
   box-sizing: border-box;
 }
 
+input.ng-invalid,
+textarea.ng-invalid,
+select.ng-invalid {
+  border-color: red;
+}
+
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
