@@ -1,0 +1,337 @@
+$colorBase: green;
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: #f8f8f8;
+    text-decoration: none;
+    display: table;
+}
+
+body, form, div, p, a, img, h1, h2, h3, h4, h5, h6, table, table tr, table td {
+    border: none;
+    color: #000000;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none;
+}
+
+input,
+textarea,
+select {
+    outline: none;
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: underline;
+    outline: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+h1, h2 {
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+.app-header {
+    background-color: $colorBase;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.app-menu {
+    text-align: center;
+    background-color: #ffffff;
+    margin: 0 0 20px 0;
+    letter-spacing: -4px;
+
+    a {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        letter-spacing: 0;
+
+        &.selected,
+        &:hover {
+            background-color: rgba(0, 128, 0, 0.2);
+        }
+    }
+}
+
+.app-content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    display: block;
+}
+
+.app-todo-list {
+    padding: 0;
+    margin: 0 -10px;
+    list-style: none;
+
+    > li {
+        display: inline-block;
+        vertical-align: top;
+        width: 33.33%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+}
+
+.app-todo-element {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 10px 0 10px;
+    border-radius: 5px;
+    margin: 0 0 20px 0;
+    position: relative;
+
+    &.new {
+        background-color: rgba(0, 128, 0, 0.2);
+    }
+
+    input[type="text"] {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 10px;
+        height: 30px;
+        margin: 0 0 10px 0;
+        color: $colorBase;
+    }
+    
+    select {
+        width: 100%;
+        margin: 5px 0 0 0;
+    }
+    
+    .name {
+        font-weight: bold;
+        margin: 0 0 10px 0;
+    }
+    
+    .remove {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-weight: bold;
+        height: 8px;
+        line-height: 8px;
+        cursor: pointer;
+        display: none;
+    }
+    
+    .edit {
+        position: absolute;
+        top: 5px;
+        right: 16px;
+        font-weight: bold;
+        height: 8px;
+        line-height: 8px;
+        cursor: pointer;
+        display: none;
+    }
+
+    &:hover {
+        > .remove,
+        > .edit {
+            display: block;
+        }
+    }
+
+    .remove:hover,
+    .edit:hover {
+        color: $colorBase;
+    }
+}
+
+.app-todo-card {
+    margin: 0 -10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.04);
+    position: relative;
+
+    &:hover {
+        > .remove,
+        > .edit {
+            display: block !important;
+        }
+    }
+
+    input[type="text"] {
+        padding: 0;
+        border: none;
+        height: 28px;
+        margin: -5px 0;
+        display: block;
+        background-color: transparent;
+    }
+}
+
+.app-user-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+
+    li {
+        display: block;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 10px 30px 10px 52px;
+        position: relative;
+
+        &:first-child {
+            border-top: none;
+        }
+    }
+
+    .go-arrow {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        text-decoration: none;
+        font-size: 30px;
+        height: 14px;
+        line-height: 10px;
+        opacity: 0.5;
+
+        &:hover {
+            color: $colorBase;
+            opacity: 1;
+        }
+    }
+    
+    .light {
+        display: block;
+        font-size: 12px;
+        display: block;
+        color: #555;
+    }
+    
+    .avatar {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 10px;
+        width: 32px;
+        height: 32px;
+        border: 1px solid #000;
+        border-radius: 100%;
+        background-size: cover;
+        background-position: center center;
+        background-color: #ffffff;
+    }
+
+    &.cards {
+        border: none;
+        border-radius: 0;
+        margin: 16px -10px 0 -10px;
+
+        li {
+            display: inline-block;
+            width: calc(33.33% - 20px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin: 0 10px 36px 10px;
+            padding: 20px;
+            text-align: center;
+
+            .avatar {
+                top: 0;
+                left: 50%;
+                transform: translate3d(-50%, -50%, 0);
+            }
+            
+            .go-arrow {
+                position: static;
+                font-size: 14px;
+                transform: translateY(0);
+                display: block;
+                background-color: rgba(0, 0, 0, 0.1);
+                padding: 10px;
+                margin: 20px -20px -20px -20px;
+                border-radius: 0 0 5px 5px;
+            }
+            
+            .go-arrow:before {
+                content: 'More';
+                margin: 0 5px 0 0;
+            }
+        }      
+    }  
+}
+
+.app-user-info {
+    border-collapse: collapse;
+
+    td {
+        padding: 20px 0 0 20px;
+
+        &:first-child {
+            padding-left: 0;
+            color: #444444;
+        }
+    }  
+
+    tr:first-child td {
+        padding-top: 0;
+    }
+}
+
+.app-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: url("../image/loading.gif") no-repeat center center rgba(255, 255, 255, 0.7);
+    background-size: 64px;
+}
+
+.app-view-type {
+    float: right;
+
+    a {
+        text-decoration: none;
+        margin: 0 0 0 10px;
+
+        &.selected,
+        &:hover {
+            color: $colorBase;
+        }
+    }   
+}
