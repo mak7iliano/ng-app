@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
-    <title>NG App</title>
+    <title>Ng App</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
@@ -9,16 +9,19 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic-ext" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
 </head>
-<body ng-cloak>
-    <header class="app-header">Ng App</header>
+<body ng-cloak ng-controller="bodyCtrl">
+    <header class="app-header" ng-class="{'other': header.otherHeader}">Ng App</header>
     <div ng-controller="Navigation">
         <nav class="app-menu">
             <a href="#!/" ng-class="homeActive">Home</a>
             <a href="#!/todo" ng-class="todoActive">Todo</a>
             <a href="#!/team" ng-class="teamActive">Team</a>
+            <a href="#!/time" ng-class="timeActive">Time</a>
         </nav>
         <ng-view class="app-content"></ng-view>
     </div>
+
+    <div class="app-loading" ng-if="loading"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
@@ -31,6 +34,7 @@
     <script src="js/controllers/listsCtrl.js"></script>
     <script src="js/controllers/listCtrl.js"></script>
     <script src="js/controllers/cardCtrl.js"></script>
+    <script src="js/controllers/timeCtrl.js"></script>
 
     <script src="js/factories/listFactory.js"></script>
     <script src="js/factories/cardFactory.js"></script>

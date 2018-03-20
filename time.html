@@ -1,0 +1,35 @@
+<div class="app-block-timer">
+    <div class="column" ng-controller="timerCtrl">
+        <h2>{{titleTimer}}</h2>
+        <div class="block-cloack">
+            {{min | timeFilter}}:{{sec | timeFilter}},{{msec | timeFilter}}
+        </div>
+        <div class="block-control">           
+            <a href="javascript:void(0)" class="stop" ng-if="!isPaused" ng-click="stopTimer()">Stop</a>
+            <a href="javascript:void(0)" class="start" ng-if="isPaused" ng-click="startTimer()">Start</a>
+            <a href="javascript:void(0)" class="circle" ng-if="!isPaused" ng-click="addCircle()">Circle</a>
+            <a href="javascript:void(0)" class="clean" ng-if="isPaused && (min || sec || msec)" ng-click="clearTimer()">Clear</a>
+            <div class="clear"></div>
+        </div>
+        <div class="block-result">
+            <div class="result" ng-repeat="result in results">
+                <span>{{result}}</span>
+                Circle {{$index + 1}}
+            </div>
+        </div>
+    </div>
+    <div class="column" ng-controller="countdownCtrl">
+        <h2>{{titleCountdown}}</h2>
+        <div class="block-cloack">
+            {{date | timeFilter}} {{hour | timeFilter}}:{{min | timeFilter}}:{{sec | timeFilter}}
+
+            <div class="message" ng-if="isFinnished"><span>Yeah!</span></div>
+        </div>
+        <div class="block-control">          
+            <a href="javascript:void(0)" class="stop" ng-if="!isPaused" ng-click="stopCountdown()">Stop</a>
+            <a href="javascript:void(0)" class="start" ng-if="isPaused" ng-click="targetDate && startCountdown()">Start</a>
+            <input class="date" type="datetime-local" ng-model="targetDate">        
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

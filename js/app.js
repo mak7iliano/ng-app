@@ -18,7 +18,22 @@ app.config(function($routeProvider){
             templateUrl: "team-view.html",
             controller: "teamViewCtrl"
         })
+        .when('/time', {
+            templateUrl: "time.html",
+            controller: "timeCtrl"
+        });
+});
 
+app.controller('bodyCtrl', function($scope){
+    $scope.loading = false;
+
+    $scope.$on('appLoading', function (event, data) {
+        if (data) {
+            $scope.loading = true;
+        } else {
+            $scope.loading = false;
+        }
+    });
 });
 
 app.controller('Navigation', function($scope){
@@ -26,6 +41,7 @@ app.controller('Navigation', function($scope){
         $scope.homeActive = "";
         $scope.todoActive = "";
         $scope.teamActive = "";
+        $scope.timeActive = "";
         $scope[what+"Active"] = "selected";
     }
 });
