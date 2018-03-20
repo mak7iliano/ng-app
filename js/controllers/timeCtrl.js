@@ -96,16 +96,16 @@ app.controller('countdownCtrl', function($scope){
             setTimeout(function() {            
                 $scope.sec --
     
-                if ($scope.sec == 0 && $scope.min != 0) {
+                if ($scope.sec == -1 && $scope.min != 0) {
                     $scope.sec = 59;
                     $scope.min--
                 }
-                if ($scope.min == 0 && $scope.hour != 0) {
+                if ($scope.min == -1 && $scope.hour != 0) {
                     $scope.min = 59;
                     $scope.hour--
                 }
                 
-                if ($scope.hour == 0 && $scope.date != 0) {
+                if ($scope.hour == -1 && $scope.date != 0) {
                     $scope.hour = 23;
                     $scope.date--
                 }
