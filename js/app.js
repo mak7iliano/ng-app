@@ -28,11 +28,7 @@ app.controller('bodyCtrl', function($scope){
     $scope.loading = false;
 
     $scope.$on('appLoading', function (event, data) {
-        if (data) {
-            $scope.loading = true;
-        } else {
-            $scope.loading = false;
-        }
+        $scope.loading = data;
     });
 });
 
