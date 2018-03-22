@@ -1,0 +1,6 @@
+<ul class="app-comments-list">
+    <li class="comment-element" ng-repeat="comment in commentstList | filter: {blogId: blogId}">
+        <div class="name">{{comment.author}} <span>{{comment.dateCreate}}</span></div>
+        {{comment.comment}}
+    </li>
+</div>

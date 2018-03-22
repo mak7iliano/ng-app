@@ -21,6 +21,14 @@ app.config(function($routeProvider){
         .when('/time', {
             templateUrl: "time.html",
             controller: "timeCtrl"
+        })
+        .when('/blog', {
+            templateUrl: "blog.html",
+            controller: "blogCtrl"
+        })
+        .when('/blog/:id', {
+            templateUrl: "blog-view.html",
+            controller: "blogViewCtrl"
         });
 });
 
@@ -38,6 +46,7 @@ app.controller('Navigation', function($scope){
         $scope.todoActive = "";
         $scope.teamActive = "";
         $scope.timeActive = "";
+        $scope.blogActive = "";
         $scope[what+"Active"] = "selected";
     }
 });

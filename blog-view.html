@@ -1,0 +1,11 @@
+<div class="app-blog-view">
+    <div class="post-date">{{blogData.dateCreate | date}}</div>
+    <div class="post-image" style="background-image: url(http://api.ki-kot.com{{blogData.thumb.path}})"></div>
+    <div class="post-content">        
+        <h1>{{blogData.name}}</h1>    
+        <div class="post-text" ng-bind-html="blogData.description | unsafe"></div> 
+    </div>
+</div>
+
+<comments-list blog-id="blogData._id" ng-if="blogData">Loading comments...</comments-list>
+<comment-form blog-id="blogData._id" ng-if="blogData">Loading comment form...</comment-form>

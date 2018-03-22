@@ -1,0 +1,12 @@
+<h1>{{title}}</h1>
+
+<ul class="app-blog-list">
+    <li class="blog-card" ng-repeat="item in blogList">
+        <div class="blog-date">{{item.dateCreate | date}}</div>
+        <a class="blog-image" href="#!/blog/{{item._id}}" ng-style="{'background-image': 'url(http://api.ki-kot.com{{item.thumb.path}})'}"></a>
+        <div class="blog-name"><a href="#!/blog/{{item._id}}">{{item.name}}</a></div>
+        <div class="blog-description">{{item.description | stripTags | limitTo: 200}}{{item.description.length > 20 ? '...' : ''}}</div>
+    </li>
+    <li class="blog-card empty"></li>
+    <li class="blog-card empty"></li>
+</ul>

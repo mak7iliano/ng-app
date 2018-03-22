@@ -1,0 +1,8 @@
+<div class="app-comment-add">
+    <div class="caption">Add comment</div>
+    <form ng-submit="addComment(commentText)" novalidate> 
+        <input type="text" placeholder="You name" ng-model="commentAuthor" required> 
+        <textarea placeholder="Your comment" ng-model="commentText" required></textarea>
+        <input class="app-btn" type="submit" value="Send">
+    </form>    
+</div>
