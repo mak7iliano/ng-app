@@ -53,6 +53,10 @@ input[type="text"]:focus {
   border-color: green;
 }
 
+input[type="text"].not-valid {
+  border-color: red;
+}
+
 textarea {
   display: block;
   width: 100%;
@@ -67,7 +71,7 @@ textarea:focus {
   border-color: green;
 }
 
-.ng-invalid {
+textarea.not-valid {
   border-color: red;
 }
 
@@ -665,5 +669,11 @@ h1, h2 {
 
 .app-comment-add textarea:focus {
   border-color: green;
+}
+
+.app-comment-add .message-success {
+  float: right;
+  line-height: 40px;
+  color: green;
 }
 /*# sourceMappingURL=styles.css.map */

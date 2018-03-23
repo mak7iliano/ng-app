@@ -54,6 +54,10 @@ input[type="text"] {
     &:focus {
         border-color: $colorBase;
     }
+
+    &.not-valid  {
+        border-color: red;
+    }
 }
 
 textarea {
@@ -68,10 +72,10 @@ textarea {
     &:focus {
         border-color: $colorBase;
     }
-}
 
-.ng-invalid {
-    border-color: red;
+    &.not-valid  {
+        border-color: red;
+    }
 }
 
 a {
@@ -673,5 +677,11 @@ h1, h2 {
         &:focus {
             border-color: $colorBase;
         }
+    }
+
+    .message-success {
+        float: right;
+        line-height: 40px;
+        color: green;
     }
 }
