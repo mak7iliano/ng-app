@@ -4,7 +4,7 @@ app.directive('commentsList', function (){
         scope: {
             blogId: '='
         },
-        templateUrl: '../blocks/comments.html',
+        templateUrl: './blocks/comments.html',
         controller: 'commetsCtrl'
     };
 });
@@ -15,7 +15,7 @@ app.directive('commentForm', function (){
         scope: {
             blogId: '='
         },
-        templateUrl: '../blocks/commentAdd.html',
+        templateUrl: './blocks/commentAdd.html',
         controller: 'commetAddCtrl'
     };
 });
