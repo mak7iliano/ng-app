@@ -43,8 +43,40 @@ input::-moz-focus-inner {
     padding: 0;
 }
 
-.ng-invalid {
-    border-color: red;
+input[type="text"],
+input[type="password"] { 
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0 10px;
+    border-radius: $radius;
+    height: 40px;
+
+    &:focus {
+        border-color: $colorBase;
+    }
+
+    &.not-valid  {
+        border-color: red;
+    }
+}
+
+textarea {
+    display: block;
+    width: 100%;
+    height: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: $radius;
+    resize: vertical;
+
+    &:focus {
+        border-color: $colorBase;
+    }
+
+    &.not-valid  {
+        border-color: red;
+    }
 }
 
 a {
@@ -69,6 +101,22 @@ h1, h2 {
     font-weight: bold;
 }
 
+.app-btn {
+    border: 1px solid $colorBase;
+    background-color: transparent;
+    height: 40px;
+    padding: 0 20px;
+    min-width: 100px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: $radius;
+
+    &:hover {
+        background-color: $colorBase;
+        color: #fff;
+    }
+}
+
 .app-header {
     background-color: $colorBase;
     padding: 10px;
@@ -79,21 +127,83 @@ h1, h2 {
     color: #fff;
 }
 
-.app-menu {
+.app-footer {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 10px;
     text-align: center;
+    font-size: 12px;
+    margin: 20px 0 0 0
+}
+
+.app-menu {    
     background-color: #ffffff;
-    margin: 0 0 20px 0;
-    letter-spacing: -4px;
+    margin: 0 0 20px 0;    
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    .inner-menu {
+        max-width: 1000px;
+        margin: 0 auto;
+        letter-spacing: -4px;
+    }
 
     a {
         display: inline-block;
         padding: 10px 20px;
         text-decoration: none;
         letter-spacing: 0;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        position: relative;
 
         &.selected,
         &:hover {
-            background-color: rgba($colorBase, 0.2);
+            background-color: #f8f8f8;
+        }
+
+        &.selected {
+            border-color:rgba(0, 0, 0, 0.1);
+
+            &:before {
+                content: '';
+                position: absolute;
+                z-index: 10;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                border-bottom: 1px solid #f8f8f8;
+            }
+        }
+    }
+
+    .auth-menu {
+        float: right;
+        position: relative;
+        letter-spacing: 0;
+    }
+
+    .auth-form {
+        position: absolute;
+        z-index: 5;
+        top: 100%;
+        right: 0;
+        background: #f8f8f8;
+        padding: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+
+        input {
+            width: 250px;
+            margin: 0 0 5px 0;
+
+            &:last-child {
+                margin: 0;
+            }
+        }
+
+        .message-error {
+            text-align: center;
+            color: red;
+            font-size: 12px;
+            margin: 0 0 5px 0;
         }
     }
 }
@@ -454,5 +564,179 @@ h1, h2 {
             padding: 0 10px;
             box-sizing: border-box;
         }
+    }
+}
+
+.app-blog-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 -10px;
+    list-style: none;
+
+    .blog-card {
+        width: 250px;
+        flex-grow: 1;
+        margin: 0 10px 20px 10px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: $radius;
+        position: relative;
+
+        &.empty {
+            border: none;
+            margin-bottom: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        &:hover {
+            border-color: $colorBase;
+
+            .blog-name {
+                color: $colorBase;
+            }
+
+            .blog-image,
+            .blog-date {
+                border-color: $colorBase;
+            }
+        }
+    }
+
+    .blog-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center center;
+        border-radius: $radius $radius 0 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        display: block; 
+    }
+
+    .blog-name {
+        padding: 10px;        
+
+        a {
+            font-weight: bold;
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .blog-description {
+        padding: 0 10px 10px 10px;
+        word-wrap: break-word;
+    }
+
+    .blog-date {
+        position: absolute;
+        top: -1px;
+        right: -1px; 
+        background-color: #fff;
+        padding: 3px 5px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 0 $radius 0 $radius;
+        font-size: 10px;
+    }
+}
+
+.app-blog-view {
+    position: relative;
+    margin: 0 0 20px 0;
+
+    .post-image {
+        height: 500px;
+        background-size: cover;
+        background-position: center center;
+        margin: -20px -20px 20px -20px;
+    }
+
+    .post-date {
+        position: absolute;
+        top: 0;
+        right: -20px; 
+        background-color: #fff;
+        padding: 3px 5px;
+        border-radius: 0 0 0 $radius;
+        font-size: 10px;
+    }
+
+    .post-text {
+        line-height: 30px;
+
+        iframe {
+            width: 100%;
+            display: block;
+            margin: 20px auto;
+        }
+
+        a {
+            color: $colorBase;
+        }
+    }    
+
+    .post-content {
+        background-color: #fff;
+        margin: -200px 80px 0 80px;
+        position: relative;
+        z-index: 1;
+        padding: 20px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.2)
+    }
+}
+
+.app-comments-list {
+    margin: 0 -20px -20px -20px;
+    padding: 0;
+    list-style: none;
+
+    .comment-element {
+        padding: 20px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+        .name {
+            margin: 0 0 5px 0;
+            font-weight: 600;
+
+            span {
+                font-weight: 300;
+                margin: 0 0 0 10px;
+            }
+        }
+    }
+}
+
+.app-comment-add {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 20px -20px 0 -20px;
+    padding: 20px 20px 0 20px;
+
+    .caption {
+        font-weight: bold;
+        margin: 0 0 5px 0;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        margin: 0 0 5px 0;
+    }
+
+    textarea {        
+        height: 100px;
+        min-height: 100px;
+        margin: 0 0 5px 0;
+
+        &:focus {
+            border-color: $colorBase;
+        }
+    }
+
+    .message-success {
+        float: right;
+        line-height: 40px;
+        color: green;
     }
 }

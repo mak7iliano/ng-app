@@ -40,7 +40,41 @@ input::-moz-focus-inner {
   padding: 0;
 }
 
-.ng-invalid {
+input[type="text"],
+input[type="password"] {
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 10px;
+  border-radius: 5px;
+  height: 40px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: green;
+}
+
+input[type="text"].not-valid,
+input[type="password"].not-valid {
+  border-color: red;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  height: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+textarea:focus {
+  border-color: green;
+}
+
+textarea.not-valid {
   border-color: red;
 }
 
@@ -66,6 +100,22 @@ h1, h2 {
   font-weight: bold;
 }
 
+.app-btn {
+  border: 1px solid green;
+  background-color: transparent;
+  height: 40px;
+  padding: 0 20px;
+  min-width: 100px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.app-btn:hover {
+  background-color: green;
+  color: #fff;
+}
+
 .app-header {
   background-color: green;
   padding: 10px;
@@ -76,10 +126,23 @@ h1, h2 {
   color: #fff;
 }
 
-.app-menu {
+.app-footer {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px;
   text-align: center;
+  font-size: 12px;
+  margin: 20px 0 0 0;
+}
+
+.app-menu {
   background-color: #ffffff;
   margin: 0 0 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.app-menu .inner-menu {
+  max-width: 1000px;
+  margin: 0 auto;
   letter-spacing: -4px;
 }
 
@@ -88,10 +151,59 @@ h1, h2 {
   padding: 10px 20px;
   text-decoration: none;
   letter-spacing: 0;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  position: relative;
 }
 
 .app-menu a.selected, .app-menu a:hover {
-  background-color: rgba(0, 128, 0, 0.2);
+  background-color: #f8f8f8;
+}
+
+.app-menu a.selected {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.app-menu a.selected:before {
+  content: '';
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.app-menu .auth-menu {
+  float: right;
+  position: relative;
+  letter-spacing: 0;
+}
+
+.app-menu .auth-form {
+  position: absolute;
+  z-index: 5;
+  top: 100%;
+  right: 0;
+  background: #f8f8f8;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.app-menu .auth-form input {
+  width: 250px;
+  margin: 0 0 5px 0;
+}
+
+.app-menu .auth-form input:last-child {
+  margin: 0;
+}
+
+.app-menu .auth-form .message-error {
+  text-align: center;
+  color: red;
+  font-size: 12px;
+  margin: 0 0 5px 0;
 }
 
 .app-content {
@@ -446,5 +558,179 @@ h1, h2 {
   width: calc(100% - 110px);
   padding: 0 10px;
   box-sizing: border-box;
+}
+
+.app-blog-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0 -10px;
+  list-style: none;
+}
+
+.app-blog-list .blog-card {
+  width: 250px;
+  flex-grow: 1;
+  margin: 0 10px 20px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  position: relative;
+}
+
+.app-blog-list .blog-card.empty {
+  border: none;
+  margin-bottom: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.app-blog-list .blog-card:hover {
+  border-color: green;
+}
+
+.app-blog-list .blog-card:hover .blog-name {
+  color: green;
+}
+
+.app-blog-list .blog-card:hover .blog-image,
+.app-blog-list .blog-card:hover .blog-date {
+  border-color: green;
+}
+
+.app-blog-list .blog-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 5px 5px 0 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+.app-blog-list .blog-name {
+  padding: 10px;
+}
+
+.app-blog-list .blog-name a {
+  font-weight: bold;
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-blog-list .blog-name a:hover {
+  text-decoration: underline;
+}
+
+.app-blog-list .blog-description {
+  padding: 0 10px 10px 10px;
+  word-wrap: break-word;
+}
+
+.app-blog-list .blog-date {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  background-color: #fff;
+  padding: 3px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0 5px 0 5px;
+  font-size: 10px;
+}
+
+.app-blog-view {
+  position: relative;
+  margin: 0 0 20px 0;
+}
+
+.app-blog-view .post-image {
+  height: 500px;
+  background-size: cover;
+  background-position: center center;
+  margin: -20px -20px 20px -20px;
+}
+
+.app-blog-view .post-date {
+  position: absolute;
+  top: 0;
+  right: -20px;
+  background-color: #fff;
+  padding: 3px 5px;
+  border-radius: 0 0 0 5px;
+  font-size: 10px;
+}
+
+.app-blog-view .post-text {
+  line-height: 30px;
+}
+
+.app-blog-view .post-text iframe {
+  width: 100%;
+  display: block;
+  margin: 20px auto;
+}
+
+.app-blog-view .post-text a {
+  color: green;
+}
+
+.app-blog-view .post-content {
+  background-color: #fff;
+  margin: -200px 80px 0 80px;
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.app-comments-list {
+  margin: 0 -20px -20px -20px;
+  padding: 0;
+  list-style: none;
+}
+
+.app-comments-list .comment-element {
+  padding: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.app-comments-list .comment-element .name {
+  margin: 0 0 5px 0;
+  font-weight: 600;
+}
+
+.app-comments-list .comment-element .name span {
+  font-weight: 300;
+  margin: 0 0 0 10px;
+}
+
+.app-comment-add {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 20px -20px 0 -20px;
+  padding: 20px 20px 0 20px;
+}
+
+.app-comment-add .caption {
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+
+.app-comment-add input[type="text"] {
+  width: 100%;
+  margin: 0 0 5px 0;
+}
+
+.app-comment-add textarea {
+  height: 100px;
+  min-height: 100px;
+  margin: 0 0 5px 0;
+}
+
+.app-comment-add textarea:focus {
+  border-color: green;
+}
+
+.app-comment-add .message-success {
+  float: right;
+  line-height: 40px;
+  color: green;
 }
 /*# sourceMappingURL=styles.css.map */

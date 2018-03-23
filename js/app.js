@@ -21,15 +21,27 @@ app.config(function($routeProvider){
         .when('/time', {
             templateUrl: "time.html",
             controller: "timeCtrl"
+        })
+        .when('/blog', {
+            templateUrl: "blog.html",
+            controller: "blogCtrl"
+        })
+        .when('/blog/:id', {
+            templateUrl: "blog-view.html",
+            controller: "blogViewCtrl"
         });
 });
 
-app.controller('bodyCtrl', function($scope){
+app.controller('bodyCtrl', function($scope, $rootScope){
     $scope.loading = false;
 
     $scope.$on('appLoading', function (event, data) {
         $scope.loading = data;
     });
+
+    if (localStorage.getItem('authUser')) {
+        $rootScope.authUser = localStorage.getItem('authUser');
+    }
 });
 
 app.controller('Navigation', function($scope){
@@ -38,6 +50,7 @@ app.controller('Navigation', function($scope){
         $scope.todoActive = "";
         $scope.teamActive = "";
         $scope.timeActive = "";
+        $scope.blogActive = "";
         $scope[what+"Active"] = "selected";
     }
 });
