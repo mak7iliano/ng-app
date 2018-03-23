@@ -13,11 +13,29 @@
     <header class="app-header">Ng App</header>
     <div ng-controller="Navigation">
         <nav class="app-menu">
-            <a href="#!/" ng-class="homeActive">Home</a>
-            <a href="#!/todo" ng-class="todoActive">Todo</a>
-            <a href="#!/team" ng-class="teamActive">Team</a>
-            <a href="#!/time" ng-class="timeActive">Time</a>
-            <a href="#!/blog" ng-class="blogActive">Blog</a> 
+            <div class="inner-menu">
+                <div class="auth-menu" ng-controller="authCtrl">
+                    <a href="javascript:void(0)" ng-click="authFormToggle()" ng-class="{'selected' : authFormActive}">
+                        <span ng-if="loginUserName">{{loginUserName}}</span>
+                        <span ng-if="!loginUserName">Sign in </span>
+                    </a>
+                    <form name="authForm" class="auth-form" ng-show="authFormActive && !loginUserName" ng-submit="authSend(authForm.$valid)" novalidate>
+                        <div class="message-error" ng-if="authFormError">Wrong user name or password</div>
+                        <input name="name" ng-class="{'not-valid' : authForm.name.$invalid && submitted}" type="text" placeholder="User name" ng-model="authUser" required>
+                        <input name="password" ng-class="{'not-valid' : authForm.password.$invalid && submitted}" type="password" placeholder="User password" ng-model="authPassword" required>
+                        <input class="app-btn" type="submit" value="Login">                        
+                    </form>
+                    <div class="auth-form" ng-show="authFormActive && loginUserName">
+                        <input class="app-btn" type="submit" value="Logout" ng-click="logout()">
+                    </div>
+                </div>    
+
+                <a href="#!/" ng-class="homeActive">Home</a>
+                <a href="#!/todo" ng-class="todoActive">Todo</a>
+                <a href="#!/team" ng-class="teamActive">Team</a>
+                <a href="#!/time" ng-class="timeActive">Time</a>
+                <a href="#!/blog" ng-class="blogActive">Blog</a>                 
+            </div>
         </nav>
         <ng-view class="app-content"></ng-view>
     </div>
@@ -29,7 +47,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
     <script src="https://code.angularjs.org/1.6.9/angular-route.min.js"></script>
 
-    <script src="js/app.js"></script>
+    <script src="js/app.js"></script>    
     <script src="js/controllers/homeCtrl.js"></script>
     <script src="js/controllers/teamCtrl.js"></script>
     <script src="js/controllers/todoCtrl.js"></script>
@@ -40,12 +58,14 @@
     <script src="js/controllers/blogCtrl.js"></script>
     <script src="js/controllers/commentsCtrl.js"></script>
     <script src="js/controllers/commentAddCtrl.js"></script>
+    <script src="js/controllers/authCtrl.js"></script>
 
     <script src="js/factories/listFactory.js"></script>
     <script src="js/factories/cardFactory.js"></script>
     <script src="js/factories/teamFactory.js"></script>
     <script src="js/factories/blogFactory.js"></script>
     <script src="js/factories/commentFactory.js"></script>
+    <script src="js/factories/authFactory.js"></script>
 
     <script src="js/directives/closeEditing.js"></script>
     <script src="js/directives/commentsList.js"></script>

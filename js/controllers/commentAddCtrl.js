@@ -1,4 +1,9 @@
 app.controller('commetAddCtrl', function($scope, $rootScope, commentFactory){  
+    if ($rootScope.authUser) {
+        $scope.rootCommentAuthor = $rootScope.authUser;
+        $scope.commentAuthor = $rootScope.authUser;
+    }
+
     $scope.postSuccess = false;     
     $scope.addComment = function(isValid) {
         $scope.submitted = true;        
@@ -6,8 +11,7 @@ app.controller('commetAddCtrl', function($scope, $rootScope, commentFactory){
             $scope.submitted = false;
             commentFactory.postComment($scope.commentAuthor, $scope.commentText, $scope.blogId)
             .then(function(data) {
-                if (data.status == 200) {     
-            
+                if (data.status == 200) {   
                     $scope.commentAuthor = '';
                     $scope.commentText = '';
                     $scope.postSuccess = true;   

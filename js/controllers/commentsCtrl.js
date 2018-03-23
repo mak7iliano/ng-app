@@ -1,4 +1,4 @@
-app.controller('commetsCtrl', function($scope, commentFactory){        
+app.controller('commetsCtrl', function($scope, commentFactory){     
     let getComments = function() {
         $scope.$emit('appLoading', true);
         commentFactory.getList().then(function(data){

@@ -40,7 +40,8 @@ input::-moz-focus-inner {
   padding: 0;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   display: inline-block;
   vertical-align: middle;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -49,11 +50,13 @@ input[type="text"] {
   height: 40px;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus {
   border-color: green;
 }
 
-input[type="text"].not-valid {
+input[type="text"].not-valid,
+input[type="password"].not-valid {
   border-color: red;
 }
 
@@ -132,9 +135,14 @@ h1, h2 {
 }
 
 .app-menu {
-  text-align: center;
   background-color: #ffffff;
   margin: 0 0 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.app-menu .inner-menu {
+  max-width: 1000px;
+  margin: 0 auto;
   letter-spacing: -4px;
 }
 
@@ -143,10 +151,59 @@ h1, h2 {
   padding: 10px 20px;
   text-decoration: none;
   letter-spacing: 0;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  position: relative;
 }
 
 .app-menu a.selected, .app-menu a:hover {
-  background-color: rgba(0, 128, 0, 0.2);
+  background-color: #f8f8f8;
+}
+
+.app-menu a.selected {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.app-menu a.selected:before {
+  content: '';
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.app-menu .auth-menu {
+  float: right;
+  position: relative;
+  letter-spacing: 0;
+}
+
+.app-menu .auth-form {
+  position: absolute;
+  z-index: 5;
+  top: 100%;
+  right: 0;
+  background: #f8f8f8;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.app-menu .auth-form input {
+  width: 250px;
+  margin: 0 0 5px 0;
+}
+
+.app-menu .auth-form input:last-child {
+  margin: 0;
+}
+
+.app-menu .auth-form .message-error {
+  text-align: center;
+  color: red;
+  font-size: 12px;
+  margin: 0 0 5px 0;
 }
 
 .app-content {
