@@ -1,20 +1,22 @@
-app.controller('blogCtrl', function($scope, blogFactory){    
+app.controller('blogCtrl', function($scope, $rootScope, blogFactory){    
     $scope.title = "Blog";
     $scope.setActive("blog");
-    $scope.$emit('appLoading', true);
+    $scope.$emit('appLoading', true);    
 
-    blogFactory.getList().then(function(data){
+    let apiTokken = $rootScope.defaultTokken;
+    blogFactory.getList(apiTokken).then(function(data){
         $scope.blogList = data;
         $scope.$emit('appLoading', false);
     });
 });
 
-app.controller('blogViewCtrl', function($scope, blogFactory){    
+app.controller('blogViewCtrl', function($scope, $rootScope, blogFactory){    
     $scope.title = "Blog";
     $scope.setActive("blog");
     $scope.$emit('appLoading', true);
 
-    blogFactory.getBlog().then(function(data){
+    let apiTokken = $rootScope.defaultTokken;
+    blogFactory.getBlog(apiTokken).then(function(data){
         $scope.blogData = data[0];
         $scope.$emit('appLoading', false);
     });

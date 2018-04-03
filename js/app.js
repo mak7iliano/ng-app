@@ -40,8 +40,9 @@ app.controller('bodyCtrl', function($scope, $rootScope){
     });
 
     if (localStorage.getItem('authUser')) {
-        $rootScope.authUser = localStorage.getItem('authUser');
+        $rootScope.authUser = JSON.parse(localStorage.getItem('authUser'));
     }
+    $rootScope.defaultTokken = 'account-244bcb82eeaad7b438194f5755b2fc';
 });
 
 app.controller('Navigation', function($scope){
