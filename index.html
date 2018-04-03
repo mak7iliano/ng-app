@@ -15,9 +15,10 @@
         <nav class="app-menu">
             <div class="inner-menu">
                 <div class="auth-menu" ng-controller="authCtrl">
+                    <a href="#!/registration" ng-class="registrationActive" ng-show="!loginUserName">Sign up</a>
                     <a href="javascript:void(0)" ng-click="authFormToggle()" ng-class="{'selected' : authFormActive}">
                         <span ng-if="loginUserName">{{loginUserName}}</span>
-                        <span ng-if="!loginUserName">Sign in </span>
+                        <span ng-if="!loginUserName">Sign in</span>
                     </a>
                     <form name="authForm" class="auth-form" ng-show="authFormActive && !loginUserName" ng-submit="authSend(authForm.$valid)" novalidate>
                         <div class="message-error" ng-if="authFormError">Wrong user name or password</div>
@@ -59,6 +60,7 @@
     <script src="js/controllers/commentsCtrl.js"></script>
     <script src="js/controllers/commentAddCtrl.js"></script>
     <script src="js/controllers/authCtrl.js"></script>
+    <script src="js/controllers/registrationCtrl.js"></script>
 
     <script src="js/factories/listFactory.js"></script>
     <script src="js/factories/cardFactory.js"></script>
@@ -66,6 +68,7 @@
     <script src="js/factories/blogFactory.js"></script>
     <script src="js/factories/commentFactory.js"></script>
     <script src="js/factories/authFactory.js"></script>
+    <script src="js/factories/registrationFactory.js"></script>
 
     <script src="js/directives/closeEditing.js"></script>
     <script src="js/directives/commentsList.js"></script>

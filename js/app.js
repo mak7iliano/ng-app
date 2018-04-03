@@ -29,6 +29,10 @@ app.config(function($routeProvider){
         .when('/blog/:id', {
             templateUrl: "blog-view.html",
             controller: "blogViewCtrl"
+        })
+        .when('/registration', {
+            templateUrl: "registration.html",
+            controller: "registrationCtrl"
         });
 });
 
@@ -52,6 +56,7 @@ app.controller('Navigation', function($scope){
         $scope.teamActive = "";
         $scope.timeActive = "";
         $scope.blogActive = "";
+        $scope.registrationActive = "";
         $scope[what+"Active"] = "selected";
     }
 });

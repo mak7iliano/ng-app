@@ -1,0 +1,46 @@
+<h1>Registration</h1>
+
+<form name="registerForm" class="app-form register-form" ng-submit="register(registerForm.$valid)" ng-show="!registerSuccess" novalidate>
+    <div class="form-error" ng-if="registerError">{{registerError}}</div>
+    <div class="form-element">
+        <input name="name" 
+               ng-class="{'not-valid' : registerForm.name.$invalid && submitted}"
+               type="text" 
+               placeholder="Your name"
+               ng-model="name"
+               required>
+    </div>
+    <div class="form-element">
+        <input name="email" 
+               ng-class="{'not-valid' : registerForm.email.$invalid && submitted}" 
+               type="email"
+               placeholder="Your email"
+               ng-model="email" 
+               required>
+    </div>
+    <div class="form-element">
+        <input name="password" 
+               ng-class="{'not-valid' : registerForm.password.$invalid && submitted || password != passwordConfirm}" 
+               type="password" 
+               placeholder="Your password" 
+               ng-model="password" 
+               minlength="6"
+               required>
+    </div>
+    <div class="form-element">
+        <input name="passwordConfirm" 
+               ng-class="{'not-valid' : registerForm.passwordConfirm.$invalid && submitted || password != passwordConfirm}" 
+               type="password" 
+               placeholder="Confirm password"
+               ng-model="passwordConfirm" 
+               minlength="6"
+               required>
+    </div>
+    <div class="form-element">
+        <input class="app-btn" type="submit" value="Register">
+    </div>
+</form>
+<div ng-show="registerSuccess">
+    You successfully registered your account! <br>
+    Please sign in
+</div>

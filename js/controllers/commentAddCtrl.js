@@ -4,6 +4,7 @@ app.controller('commetAddCtrl', function($scope, $rootScope, commentFactory){
     $scope.allowAddComment = false;
 
     if ($rootScope.authUser) {
+        console.log($rootScope.authUser);
         $scope.commentAuthor = $rootScope.authUser.name;
         apiTokken =  $rootScope.authUser.api_key
 
